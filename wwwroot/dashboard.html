@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - FolioIQ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+    <div ws-replace="MainContent">
+        <nav class="bg-white border-b border-slate-200 sticky top-0 z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <div class="flex items-center space-x-8">
+                        <span class="text-2xl font-bold text-indigo-600">FolioIQ</span>
+                        <div class="hidden md:flex space-x-4">
+                            <a href="/dashboard" class="text-slate-900 font-semibold">Dashboard</a>
+                            <a href="/leaderboard" class="text-slate-500 hover:text-slate-900">Leaderboard</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span ws-hole="Username" class="text-slate-600"></span>
+                        <button ws-onclick="Logout" class="text-sm text-slate-500 hover:text-red-600">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Portfolio Overview -->
+                <div class="lg:col-span-2 space-y-8">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                        <h2 class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-4">Total Portfolio Value</h2>
+                        <div class="flex items-baseline space-x-4">
+                            <span ws-hole="TotalValue" class="text-4xl font-bold"></span>
+                            <span ws-hole="TotalProfitLoss" class="text-lg font-semibold"></span>
+                        </div>
+                        <div class="mt-6 grid grid-cols-2 gap-4 border-t border-slate-100 pt-6">
+                            <div>
+                                <p class="text-xs text-slate-400 mb-1">Cash Balance</p>
+                                <p ws-hole="CashBalance" class="text-lg font-semibold text-slate-700"></p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 mb-1">Total Invested</p>
+                                <p ws-hole="TotalInvested" class="text-lg font-semibold text-slate-700"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                        <div class="px-6 py-4 border-b border-slate-200 flex justify-between items-center">
+                            <h2 class="font-bold text-slate-800">Your Holdings</h2>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead class="bg-slate-50 text-slate-500 text-xs uppercase">
+                                    <tr>
+                                        <th class="px-6 py-3">Stock</th>
+                                        <th class="px-6 py-3">Shares</th>
+                                        <th class="px-6 py-3">Avg Price</th>
+                                        <th class="px-6 py-3">Current</th>
+                                        <th class="px-6 py-3">Value</th>
+                                        <th class="px-6 py-3 text-right">Profit/Loss</th>
+                                    </tr>
+                                </thead>
+                                <tbody ws-hole="HoldingsList" class="divide-y divide-slate-100">
+                                    <!-- Holdings rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar: Search & Watchlist -->
+                <div class="space-y-8">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                        <h2 class="font-bold text-slate-800 mb-4">Search Stocks</h2>
+                        <div class="relative">
+                            <input ws-var="SearchQuery" type="text" placeholder="Ticker or company name..." class="w-full pl-4 pr-10 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+                            <button ws-onclick="Search" class="absolute right-2 top-2 text-slate-400 hover:text-indigo-600">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            </button>
+                        </div>
+                        <div ws-hole="SearchResults" class="mt-4 space-y-2 max-h-60 overflow-y-auto">
+                            <!-- Search result items -->
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                        <h2 class="font-bold text-slate-800 mb-4">Watchlist</h2>
+                        <div ws-hole="Watchlist" class="space-y-4">
+                            <!-- Watchlist items -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="text/javascript" src="/Content/FolioIQ.js"></script>
+</body>
+</html>

@@ -56,5 +56,3 @@ CREATE TABLE Watchlist (
     AddedAt DATETIME2 DEFAULT GETUTCDATE(),
     CONSTRAINT UQ_Watchlist_User_Ticker UNIQUE(UserId, Ticker)
 );
-
-// working on minor cleanup, remove unused imports...

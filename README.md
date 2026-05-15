@@ -28,29 +28,36 @@ FolioIQ removes that barrier — practice with real market data, zero financial 
 |-------|-----------|
 | Language | F# / .NET 8 |
 | Framework | WebSharper (client-server) |
-| Database | SQL Server + SqlHydra |
+| Database | SQLite |
 | Styling | Tailwind CSS |
 | Stock Data | Alpha Vantage API |
-| Hosting | Azure App Service |
-| CI/CD | GitHub Actions |
 
 ## Build & Run Locally
 
-**Prerequisites:** .NET 8 SDK, SQL Server (or LocalDB)
+**Prerequisites:** .NET 8 SDK
 
-```bash
-git clone https://github.com/YOUR_USERNAME/folioiq.git
-cd folioiq
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/3lytg/FolioIQ.git
+   cd FolioIQ
+   ```
 
-# Set up database
-sqlcmd -S "(localdb)\MSSQLLocalDB" -i schema.sql
+2. **Configure API Key:**
+   Open `appsettings.json` and add your [Alpha Vantage API Key](https://www.alphavantage.co/support/#api-key):
+   ```json
+   "AlphaVantage": {
+     "ApiKey": "YOUR_KEY_HERE"
+   }
+   ```
 
-# Add your Alpha Vantage API key to appsettings.json
+3. **Run the application:**
+   ```bash
+   dotnet run
+   ```
+   *Note: The SQLite database (`folioiq.db`) will be automatically initialized on the first run.*
 
-dotnet run
-```
-
-Open http://localhost:5000
+4. **Access the app:**
+   Open [http://localhost:5000](http://localhost:5000) in your browser.
 
 ## License
 

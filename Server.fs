@@ -88,5 +88,3 @@ module Server =
             | Some userId -> return! Database.getWatchlist userId
             | None -> return []
         }
-
-// working on minor cleanup, remove unused imports...

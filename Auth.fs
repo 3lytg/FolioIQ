@@ -37,5 +37,3 @@ module Auth =
             | Some userId -> return userId
             | None -> return failwith "Unauthorized"
         }
-
-// working on minor cleanup, remove unused imports...

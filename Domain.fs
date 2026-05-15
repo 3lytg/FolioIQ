@@ -101,5 +101,3 @@ type WatchlistItem = {
     Ticker: string
     CompanyName: string
 }
-
-// working on minor cleanup, remove unused imports...
